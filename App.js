@@ -1,29 +1,58 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import {StyleSheet, View, Image, TouchableOpacity, FlatList} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import axios from 'axios'
+import VideoItem from './src/components/videoItem'
+import data from './data.json'
 
 type Props = {};
 export default class App extends Component<Props> {
+  componentDidMount(){
+    // axios.get('https://swapi.co/api/people')
+    //   .then(({data}) => {
+    //     console.log(data)
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <View style={styles.navBar}>
+          <Image source={require('./src/images/logo.png')} style={{width: 98, height: 22}}></Image>
+          <View style={styles.rightNav}>
+            <TouchableOpacity>
+              <Icon style={styles.navItem} name='search' size={25} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Icon style={styles.navItem} name='account-circle' size={25} />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.body}>
+          <FlatList
+            data={data.items}
+            renderItem={(video) =><VideoItem video={video.item} />}
+            keyExtractor={(item)=> item.id}
+            ItemSeparatorComponent={()=><View style={{height: 0.5, backgroundColor:"#cccccc"}}/>}
+          />
+        </View>
+        <View style={styles.tabBar}>
+          <TouchableOpacity style={styles.tabItem}>
+            <Icon name="home" size={25}></Icon>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.tabItem}>
+            <Icon name="whatshot" size={25}></Icon>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.tabItem}>
+            <Icon name="subscriptions" size={25}></Icon>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.tabItem}>
+            <Icon name="folder" size={25}></Icon>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -31,19 +60,41 @@ export default class App extends Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    flex: 1
+  },
+  navBar: {
+    height: 55,
+    backgroundColor: 'white',
+    elevation: 3,
+    paddingHorizontal: 15,
+    flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: 'space-between'
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  rightNav: {
+    flexDirection: 'row'
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  navItem: {
+    marginLeft: 25,
   },
+  body: {
+    flex: 1
+  },
+  tabBar: {
+    backgroundColor: 'white',
+    height: 60,
+    borderTopWidth: 0.5,
+    borderColor: "#E5E5E5",
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+  tabItem: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  tabTitle: {
+    fontSize: 11,
+    color: '#3c3c3c',
+    paddingTop: 4,
+  }
 });
