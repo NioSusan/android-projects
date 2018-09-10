@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Image, TouchableOpacity, FlatList} from 'react-native';
+import {StyleSheet, View, Image, TouchableOpacity, FlatList, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import axios from 'axios'
 import VideoItem from './src/components/videoItem'
@@ -24,6 +24,9 @@ export default class App extends Component<Props> {
           <Image source={require('./src/images/logo.png')} style={{width: 98, height: 22}}></Image>
           <View style={styles.rightNav}>
             <TouchableOpacity>
+              <Icon style={styles.navItem} name='videocam' size={25} />
+            </TouchableOpacity>
+            <TouchableOpacity>
               <Icon style={styles.navItem} name='search' size={25} />
             </TouchableOpacity>
             <TouchableOpacity>
@@ -42,15 +45,23 @@ export default class App extends Component<Props> {
         <View style={styles.tabBar}>
           <TouchableOpacity style={styles.tabItem}>
             <Icon name="home" size={25}></Icon>
+            <Text>Home</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.tabItem}>
             <Icon name="whatshot" size={25}></Icon>
+            <Text>Trending</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.tabItem}>
             <Icon name="subscriptions" size={25}></Icon>
+            <Text>Subscriptions</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.tabItem}>
+            <Icon name="notifications" size={25}></Icon>
+            <Text>Activity</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.tabItem}>
             <Icon name="folder" size={25}></Icon>
+            <Text>Library</Text>
           </TouchableOpacity>
         </View>
       </View>
