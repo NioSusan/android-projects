@@ -1,111 +1,28 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Image, TouchableOpacity, FlatList, Text} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import axios from 'axios'
-import VideoItem from './src/components/videoItem'
-import data from './data.json'
+import { createStackNavigator } from 'react-navigation'
+import Home from './src/components/Home'
+import Search from './src/components/Search'
+import UploadVideo from './src/components/UploadVideo'
+import Account from './src/components/Account'
 
-type Props = {};
-export default class App extends Component<Props> {
-  componentDidMount(){
-    // axios.get('https://swapi.co/api/people')
-    //   .then(({data}) => {
-    //     console.log(data)
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
-  }
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.navBar}>
-          <Image source={require('./src/images/logo.png')} style={{width: 98, height: 22}}></Image>
-          <View style={styles.rightNav}>
-            <TouchableOpacity>
-              <Icon style={styles.navItem} name='videocam' size={25} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Icon style={styles.navItem} name='search' size={25} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Icon style={styles.navItem} name='account-circle' size={25} />
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View style={styles.body}>
-          <FlatList
-            data={data.items}
-            renderItem={(video) =><VideoItem video={video.item} />}
-            keyExtractor={(item)=> item.id}
-            ItemSeparatorComponent={()=><View style={{height: 0.5, backgroundColor:"#cccccc"}}/>}
-          />
-        </View>
-        <View style={styles.tabBar}>
-          <TouchableOpacity style={styles.tabItem}>
-            <Icon name="home" size={25}></Icon>
-            <Text>Home</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.tabItem}>
-            <Icon name="whatshot" size={25}></Icon>
-            <Text>Trending</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.tabItem}>
-            <Icon name="subscriptions" size={25}></Icon>
-            <Text>Subscriptions</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.tabItem}>
-            <Icon name="notifications" size={25}></Icon>
-            <Text>Activity</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.tabItem}>
-            <Icon name="folder" size={25}></Icon>
-            <Text>Library</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  }
+export default class App extends Component{
+    render() {
+      return (
+        <AppStackNavigator />
+       
+      )
+    }
 }
+const AppStackNavigator =  createStackNavigator({
+  Home: {
+    screen: Home,
+    navigationOptions:{
+      header: null
+    }
+  },
+  Search: Search,
+  UploadVideo: UploadVideo,
+  Account: Account
+})
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  navBar: {
-    height: 55,
-    backgroundColor: 'white',
-    elevation: 3,
-    paddingHorizontal: 15,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
-  rightNav: {
-    flexDirection: 'row'
-  },
-  navItem: {
-    marginLeft: 25,
-  },
-  body: {
-    flex: 1
-  },
-  tabBar: {
-    backgroundColor: 'white',
-    height: 60,
-    borderTopWidth: 0.5,
-    borderColor: "#E5E5E5",
-    flexDirection: 'row',
-    justifyContent: 'space-around'
-  },
-  tabItem: {
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  tabTitle: {
-    fontSize: 11,
-    color: '#3c3c3c',
-    paddingTop: 4,
-  }
-});
+

@@ -3,24 +3,22 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class VideoItem extends Component {
-    pencet(){
-        console.log('ya!')
-    }
+   
     render(){
         let video = this.props.video;
         return(
             <View style={styles.container}>
-                <Image source={{uri: video.snippet.thumbnails.medium.url}} style={{height: 200}}></Image>
-                <View style={styles.descContainer}>
-                    <Image source={{uri: 'https://randomuser.me/api/portraits/women/0.jpg'}} style={{width: 50, height: 50, borderRadius: 25}}/>
-                    <View style={styles.videoDetails}>
-                        <Text style={styles.videoTitle}>{video.snippet.title}</Text>
-                        <Text style={styles.videoChannelTitle}>{video.snippet.channelTitle + " · " + nFormatter(video.statistics.viewCount, 1) + " ·" + ' 3 months ago'}</Text>
+                <Image source={{uri:video.snippet.thumbnails.medium.url}} style={{height: 200}}></Image>
+                    <View style={styles.descContainer}>
+                        <Image source={{uri: 'https://randomuser.me/api/portraits/women/0.jpg'}} style={{width: 50, height: 50, borderRadius: 25}}/>
+                        <View style={styles.videoDetails}>
+                            <Text style={styles.videoTitle}>{video.snippet.title}</Text>
+                            <Text style={styles.videoChannelTitle}>{video.snippet.channelTitle + " · " + nFormatter(1000000, 1) + " ·" + ' 3 months ago'}</Text>
+                        </View>
+                        <TouchableOpacity>
+                            <Icon name="more-vert" size={20} color="#999999"/>
+                        </TouchableOpacity>
                     </View>
-                    <TouchableOpacity>
-                        <Icon name="more-vert" size={20} color="#999999"/>
-                    </TouchableOpacity>
-                </View>
             </View>
         )
     }
