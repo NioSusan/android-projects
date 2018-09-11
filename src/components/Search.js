@@ -21,13 +21,11 @@ export default class Search extends Component {
             this.setState({ 
                  videos: videos,
              })
-             console.log(this.state.videos)
         })
        
     }
     handleKeyDown = (e) => {
        if(e.nativeEvent.key==='Enter'){
-           console.log('Search this=>',this.state.term)
            this.videoSearch(this.state.term)
        }
     }
