@@ -36,7 +36,7 @@ export class Home extends Component{
   componentDidMount(){
     this.videoSearch('music') 
   }
-  
+
   render() {
     return (
       <View style={styles.container}>
@@ -54,10 +54,10 @@ export class Home extends Component{
             </TouchableOpacity>
           </View>
         </View>
-        <View>        
+        <View>  
           <FlatList
             data={this.state.videos}
-            renderItem={(video) =><VideoItem video={video.item} />}
+            renderItem={(video) =><VideoItem navigation={this.props.navigation} video={video.item} />}
             keyExtractor={(item)=> item.etag}
             ItemSeparatorComponent={()=><View style={{height: 0.5, backgroundColor:"#cccccc"}}/>}
           />

@@ -4,6 +4,7 @@ import Home from './src/components/Home'
 import Search from './src/components/Search'
 import UploadVideo from './src/components/UploadVideo'
 import Account from './src/components/Account'
+import SelectedVideo from './src/components/SelectedVideo'
 
 export default class App extends Component{
     render() {
@@ -22,7 +23,13 @@ const AppStackNavigator =  createStackNavigator({
   },
   Search: Search,
   UploadVideo: UploadVideo,
-  Account: Account
+  Account: Account,
+  SelectedVideo:{
+    screen: SelectedVideo,
+    navigationOptions:{
+      header: null
+    }
+  } 
 })
 
 

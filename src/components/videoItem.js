@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import SelectedVideo from './SelectedVideo'
 
 export default class VideoItem extends Component {
     handleSelectedVideo = () => {
-       console.log('SELECTED VIDEO!', this.props.video.etag)
+       console.log('SELECTED VIDEO!', this.props.video)
+       this.props.navigation.replace('SelectedVideo', {video: this.props.video})
     }
     render(){
         let video = this.props.video;
@@ -69,3 +71,7 @@ const styles = StyleSheet.create({
         paddingTop: 3,
     }
 })
+
+
+  
+  
