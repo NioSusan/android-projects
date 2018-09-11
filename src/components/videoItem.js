@@ -3,12 +3,16 @@ import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class VideoItem extends Component {
-   
+    handleSelectedVideo = () => {
+       console.log('SELECTED VIDEO!', this.props.video.etag)
+    }
     render(){
         let video = this.props.video;
         return(
             <View style={styles.container}>
-                <Image source={{uri:video.snippet.thumbnails.medium.url}} style={{height: 200}}></Image>
+                <TouchableOpacity onPress={this.handleSelectedVideo}>
+                    <Image source={{uri:video.snippet.thumbnails.medium.url}} style={{height: 200}}/>
+                </TouchableOpacity>
                     <View style={styles.descContainer}>
                         <Image source={{uri: 'https://randomuser.me/api/portraits/women/0.jpg'}} style={{width: 50, height: 50, borderRadius: 25}}/>
                         <View style={styles.videoDetails}>

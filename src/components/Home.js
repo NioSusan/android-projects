@@ -34,8 +34,7 @@ export class Home extends Component{
   }
   
   componentDidMount(){
-    this.videoSearch('music')
-  
+    this.videoSearch('music') 
   }
   
   render() {
@@ -116,7 +115,7 @@ export default createBottomTabNavigator({
             header: null,
             tabBarLabel: 'Home',
             tabBarIcon: ({tintColor}) =>(
-                <Icon name="home" size={25}></Icon>
+                <Icon color={tintColor} name="home" size={25}></Icon>
             )
         }
     },
@@ -126,7 +125,7 @@ export default createBottomTabNavigator({
             header: null,
             tabBarLabel: 'Trending',
             tabBarIcon: ({tintColor}) =>(
-                <Icon name="whatshot" size={25}></Icon>
+                <Icon color={tintColor} name="whatshot" size={25}></Icon>
             )
         }
     },
@@ -136,7 +135,7 @@ export default createBottomTabNavigator({
             header: null,
             tabBarLabel: 'Subscriptions',
             tabBarIcon: ({tintColor}) =>(
-                <Icon name="subscriptions" size={25}></Icon>
+                <Icon color={tintColor} name="subscriptions" size={25}></Icon>
             )
         }
     },
@@ -146,7 +145,7 @@ export default createBottomTabNavigator({
             header: null,
             tabBarLabel: 'Activity',
             tabBarIcon: ({tintColor}) =>(
-                <Icon name="notifications" size={25}></Icon>
+                <Icon color={tintColor} name="notifications" size={25}></Icon>
             )
         }
     },
@@ -156,9 +155,14 @@ export default createBottomTabNavigator({
             header: null,
             tabBarLabel: 'Library',
             tabBarIcon: ({tintColor}) =>(
-                <Icon name="folder" size={25}></Icon>
+                <Icon color={tintColor} name="folder" size={25}></Icon>
             )
         }
     },
    
+}, {
+  tabBarOptions: {
+    activeTintColor: 'red',
+    inactiveTintColor: 'grey'
+  }
 })
