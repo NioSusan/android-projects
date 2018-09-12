@@ -3,29 +3,23 @@ import {View, FlatList} from 'react-native';
 import { connect } from 'react-redux';
 import { fetchTrendingVideos } from '../actions/actionCreators';
 import VideoItem from './videoItem'
+import { NavigationEvents } from 'react-navigation';
 
 class Trending extends Component{
 
-    componentDidMount(){
-        console.log('Trending page: componentDidMount()')
-        this.props.fetchTrendingVideos()
-    }
-
-    componentDidUpdate = (prevProps) => {
-        if(prevProps.data !== this.props.data){
-            // this.props.fetchTrendingVideos()
-        }
-    }
     render(){
         return(
             <View>  
-            <FlatList
-              data={this.props.data.items}
-              renderItem={(video) =><VideoItem navigation={this.props.navigation} video={video.item} />}
-              keyExtractor={(item)=> item.etag}
-              ItemSeparatorComponent={()=><View style={{height: 0.5, backgroundColor:"#cccccc"}}/>}
-            />
-          </View>
+                <NavigationEvents
+                    onDidFocus={payload => this.props.fetchTrendingVideos()}
+                />
+                <FlatList
+                    data={this.props.data.items}
+                    renderItem={(video) =><VideoItem navigation={this.props.navigation} video={video.item} />}
+                    keyExtractor={(item)=> item.etag}
+                    ItemSeparatorComponent={()=><View style={{height: 0.5, backgroundColor:"#cccccc"}}/>}
+                />
+            </View>
             
         )
     }

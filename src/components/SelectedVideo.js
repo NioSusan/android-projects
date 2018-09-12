@@ -6,16 +6,16 @@ export default SelectedVideo = (props) =>{
    if(props){
        console.log(props.navigation.state.params.video)
     }
-    let videoId = props.navigation.state.params.video.id.videoId
+    let videoId = props.navigation.state.params.video.id.videoId || props.navigation.state.params.video.id
     console.log('Ini videoId di SelectedVideo', videoId);
     let title = props.navigation.state.params.video.snippet.title
     let channelTitle = props.navigation.state.params.video.snippet.channelTitle
     return(
         <View style={styles.container}>
             <View style={styles.navBar}>
-                    <TouchableOpacity>
-                        <Icon onPress={() => props.navigation.navigate('Home')} name='arrow-back' size={25} />
-                    </TouchableOpacity>
+                <TouchableOpacity>
+                    <Icon onPress={() => props.navigation.navigate('Home')} name='arrow-back' size={25} />
+                 </TouchableOpacity>
             </View>
             <View style={styles.videoContainer}>
                 <WebView
