@@ -5,13 +5,17 @@ import Search from './src/components/Search'
 import UploadVideo from './src/components/UploadVideo'
 import Account from './src/components/Account'
 import SelectedVideo from './src/components/SelectedVideo'
+import { Provider } from 'react-redux';
+import store from './src/store'
 
 export default class App extends Component{
     render() {
       return (
-        <AppStackNavigator />
-       
+        <Provider store={store}>
+          <AppStackNavigator />
+        </Provider>
       )
+      
     }
 }
 const AppStackNavigator =  createStackNavigator({

@@ -19,7 +19,7 @@ export default class VideoItem extends Component {
                         <Image source={{uri: 'https://randomuser.me/api/portraits/women/0.jpg'}} style={{width: 50, height: 50, borderRadius: 25}}/>
                         <View style={styles.videoDetails}>
                             <Text style={styles.videoTitle}>{video.snippet.title}</Text>
-                            <Text style={styles.videoChannelTitle}>{video.snippet.channelTitle + " · " + nFormatter(1000000, 1) + " ·" + ' 3 months ago'}</Text>
+                            <Text style={styles.videoChannelTitle}>{video.snippet.channelTitle + " · " + nFormatter((video.statistics ? video.statistics.viewCount  : 1000000), 1) }</Text>
                         </View>
                         <TouchableOpacity>
                             <Icon name="more-vert" size={20} color="#999999"/>
@@ -30,7 +30,7 @@ export default class VideoItem extends Component {
     }
 }
 
-function nFormatter(num, digits) {
+function nFormatter(num=1000000, digits) {
     var si = [
       { value: 1, symbol: "" },
       { value: 1E3, symbol: "k" },

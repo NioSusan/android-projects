@@ -7,6 +7,7 @@ export default SelectedVideo = (props) =>{
        console.log(props.navigation.state.params.video)
     }
     let videoId = props.navigation.state.params.video.id.videoId
+    console.log('Ini videoId di SelectedVideo', videoId);
     let title = props.navigation.state.params.video.snippet.title
     let channelTitle = props.navigation.state.params.video.snippet.channelTitle
     return(
@@ -20,8 +21,6 @@ export default SelectedVideo = (props) =>{
                 <WebView
                     source={{uri: `https://www.youtube.com/embed/${videoId}`}}
                     style={styles.webview}
-                    startInLoadingState={true}
-                    scalesPageToFit={true}
                     />    
             </View>
             <View style={styles.videoDetails}>
