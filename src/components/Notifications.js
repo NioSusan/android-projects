@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default class YouTubeVideo extends Component {
+export default class Notifications extends Component {
     render(){
         return(
             <View style={styles.container}>
-                <Text>THIS IS YouTubeVideo PAGE!</Text>
+                <Text>This is Notifications page!</Text>
             </View>
         )
     } 

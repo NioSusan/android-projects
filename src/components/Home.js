@@ -143,9 +143,9 @@ export default createBottomTabNavigator({
         screen: Activity,
         navigationOptions:{
             header: null,
-            tabBarLabel: 'Activity',
+            tabBarLabel: 'Email',
             tabBarIcon: ({tintColor}) =>(
-                <Icon color={tintColor} name="notifications" size={25}></Icon>
+                <Icon color={tintColor} name="email" size={25}></Icon>
             )
         }
     },

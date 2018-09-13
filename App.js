@@ -5,6 +5,7 @@ import Search from './src/components/Search'
 import UploadVideo from './src/components/UploadVideo'
 import Account from './src/components/Account'
 import SelectedVideo from './src/components/SelectedVideo'
+import Activity from './src/components/Activity'
 import { Provider } from 'react-redux';
 import store from './src/store'
 
@@ -33,7 +34,8 @@ const AppStackNavigator =  createStackNavigator({
     navigationOptions:{
       header: null
     }
-  } 
+  }, 
+  Activity: Activity
 })
 
 
